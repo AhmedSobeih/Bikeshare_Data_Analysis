@@ -151,12 +151,18 @@ def user_stats(df):
     print(df.groupby(['User Type']).sum())
 
     # Display counts of gender
-    print(df.groupby(['Gender']).sum())
+    if 'Gender' in df:
+        print(df.groupby(['Gender']).sum())
+    else:
+        print('Gender stats cannot be calculated because Gender does not appear in the dataframe')
 
     # Display earliest, most recent, and most common year of birth
-    print("The earliest Year of birth is {}".format(int(df["Birth Year"].min())))
-    print("Most recent Year of birth is {}".format(int(df["Birth Year"].max())))
-    print("The earliest Year of birth is {}".format(int(df["Birth Year"].mode()[0])))
+    if 'Birth Year' in df:
+        print("The earliest Year of birth is {}".format(int(df["Birth Year"].min())))
+        print("Most recent Year of birth is {}".format(int(df["Birth Year"].max())))
+        print("The earliest Year of birth is {}".format(int(df["Birth Year"].mode()[0])))
+    else:
+        print('Gender stats cannot be calculated because Birth Year does not appear in the dataframe')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
