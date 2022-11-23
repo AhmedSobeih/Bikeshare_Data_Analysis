@@ -172,7 +172,14 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
+        row = 0
+        while True:
+            raw = input('\nWould you like to see 5 rows of raw data? Enter yes or no.\n')
+            if raw.lower() == 'yes':
+                print(df[row:row + 5])
+                row = row + 5
+            else:
+                break
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
